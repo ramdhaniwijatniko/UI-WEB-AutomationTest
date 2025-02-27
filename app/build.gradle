@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // WebDriverManager untuk otomatisasi driver
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
+
+    // Selenium WebDriver
+    implementation 'org.seleniumhq.selenium:selenium-java:4.14.0'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.11.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.11.0'
+
+    // JUnit
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+
+
+test {
+    useJUnitPlatform()
+}
