@@ -18,7 +18,7 @@ jobs:
 
       - name: Grant execute permission to Gradle wrapper
         run: chmod +x gradlew
-        
+
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
@@ -30,3 +30,9 @@ jobs:
 
       - name: Jalankan UI Test
         run: ./gradlew test
+
+      - name: Upload hasil pengujian
+        uses: actions/upload-artifact@v3
+        with:
+          name: laporan-pengujian
+          path: build/reports/tests/test  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
