@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: laporan-pengujian
-          path: build/reports/tests/test  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
+          path: app/build/reports/tests/test  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
