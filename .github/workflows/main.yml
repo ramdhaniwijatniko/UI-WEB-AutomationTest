@@ -36,3 +36,6 @@ jobs:
         with:
           name: laporan-pengujian
           path: app/build/reports/tests/test  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
+
+      - name: Debug - List files
+        run: ls -R app/build/reports/tests/test
