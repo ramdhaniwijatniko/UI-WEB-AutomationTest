@@ -27,3 +27,15 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+
+tasks.register('cucumberReport', JavaExec) {
+    main = "io.cucumber.core.cli.Main"
+    classpath = sourceSets.test.runtimeClasspath
+    args = [
+        '--plugin', 'pretty',
+        '--plugin', 'html:target/cucumber-reports.html',
+        '--glue', 'org.example.stepdefinitions',
+        'src/test/resources/features'
+    ]
+}
