@@ -35,7 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: laporan-pengujian
-          path: app/build/reports/tests/test  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
-
-      - name: Debug - List files
-        run: ls -R app/build/reports/tests/test
+          path: target/cucumber-reports.html  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
