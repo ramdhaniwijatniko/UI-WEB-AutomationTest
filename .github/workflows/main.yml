@@ -32,7 +32,7 @@ jobs:
         run: ./gradlew test
 
       - name: Upload hasil pengujian
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: laporan-pengujian
           path: app/build/reports/tests/test  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
