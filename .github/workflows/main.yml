@@ -35,4 +35,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: laporan-pengujian
-          path: target/cucumber-reports.html  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
+          path: app/target/cucumber-reports.html  # Sesuaikan path sesuai dengan lokasi hasil pengujian di proyek Anda
+
+      - name: Debug Report Path
+        run: ls -R target || ls -R build/reports
+
+      - name: Check if report exists
+        run: ls -R app/target || echo "Report not found!"
