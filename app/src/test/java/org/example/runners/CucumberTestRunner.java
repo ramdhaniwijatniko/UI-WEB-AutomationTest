@@ -8,7 +8,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = "src/test/resources/features",
     glue = "org.example.stepdefinitions",  // Pastikan ini sesuai dengan package LoginSteps.java
-    plugin = {"pretty", "html:target/cucumber-reports.html"},
+    plugin = {"pretty", "html:target/cucumber-reports.html",
+                       "json:target/cucumber.json"},
     monochrome = true
 )
 public class CucumberTestRunner {

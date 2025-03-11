@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'idea'
+    id 'io.qameta.allure' version '2.11.2' // Jika menggunakan Allure
 }
 
 repositories {
@@ -17,7 +18,7 @@ dependencies {
     // Cucumber
     testImplementation 'io.cucumber:cucumber-java:7.11.0'
     testImplementation 'io.cucumber:cucumber-junit:7.11.0'
-
+    testImplementation 'io.qameta.allure:allure-cucumber7-jvm:2.21.0' // Untuk Allure Reports
     // JUnit
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
@@ -30,12 +31,14 @@ test {
 
 
 tasks.register('cucumberReport', JavaExec) {
-    main = "io.cucumber.core.cli.Main"
-    classpath = sourceSets.test.runtimeClasspath
-    args = [
-        '--plugin', 'pretty',
-        '--plugin', 'html:target/cucumber-reports.html',
-        '--glue', 'org.example.stepdefinitions',
-        'src/test/resources/features'
-    ]
+    doFirst {
+        mainClass.set("io.cucumber.core.cli.Main")
+        classpath = sourceSets.test.runtimeClasspath
+        args = [
+            '--plugin', 'pretty',
+            '--plugin', 'html:target/cucumber-reports.html',
+            '--glue', 'org.example.stepdefinitions',
+            'src/test/resources/features'
+        ]
+    }
 }
