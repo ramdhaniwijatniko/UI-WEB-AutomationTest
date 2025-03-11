@@ -43,3 +43,14 @@ allure {
 tasks.named('allureReport') {
     dependsOn test
 }
+
+tasks.register('cucumberReport', JavaExec) {
+    mainClass = "io.cucumber.core.cli.Main"
+    classpath = sourceSets.test.runtimeClasspath
+    args = [
+        '--plugin', 'pretty',
+        '--plugin', "html:${project.buildDir}/cucumber-reports/cucumber-reports.html",
+        '--glue', 'org.example.stepdefinitions', // Sesuaikan dengan package step definitions
+        'src/test/resources/features'
+    ]
+}
