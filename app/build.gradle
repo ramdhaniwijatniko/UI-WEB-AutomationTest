@@ -36,7 +36,7 @@ tasks.register('cucumberReport', JavaExec) {
         classpath = sourceSets.test.runtimeClasspath
         args = [
             '--plugin', 'pretty',
-            '--plugin', 'html:target/cucumber-reports.html',
+            '--plugin', 'html:build/cucumber-reports/cucumber-reports.html',
             '--glue', 'org.example.stepdefinitions',
             'src/test/resources/features'
         ]
