@@ -1,7 +1,6 @@
 plugins {
     id 'java'
-    id 'idea'
-    id 'io.qameta.allure' version '2.11.2' // Jika menggunakan Allure
+    id 'io.qameta.allure' version '2.11.2' // jika menggunakan Allure
 }
 
 repositories {
@@ -30,15 +29,17 @@ test {
 }
 
 
-tasks.register('cucumberReport', JavaExec) {
-    doFirst {
-        mainClass.set("io.cucumber.core.cli.Main")
-        classpath = sourceSets.test.runtimeClasspath
-        args = [
-            '--plugin', 'pretty',
-            '--plugin', 'html:build/cucumber-reports/cucumber-reports.html',
-            '--glue', 'org.example.stepdefinitions',
-            'src/test/resources/features'
-        ]
-    }
+tasks.named('test') {
+    useJUnitPlatform()
+    systemProperty 'cucumber.publish.enabled', 'true'
+    systemProperty 'cucumber.plugin', 'pretty, json:build/cucumber-reports/cucumber.json, html:build/cucumber-reports/cucumber.html'
+}
+
+allure {
+    autoconfigure = true
+    version = "2.21.0"
+}
+
+tasks.named('allureReport') {
+    dependsOn test
 }
